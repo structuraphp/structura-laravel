@@ -1,0 +1,30 @@
+<?php
+
+declare(strict_types=1);
+
+namespace {{ namespace }};
+
+use StructuraPhp\Structura\Attributes\TestDox;
+use StructuraPhp\Structura\Expr;
+use StructuraPhp\Structura\Testing\TestBuilder;
+
+final class PolicyTest extends TestBuilder
+{
+    #[TestDox('Policies should have proper architecture')]
+    public function testPoliciesShouldHaveProperArchitecture(): void
+    {
+        $this
+            ->allClasses()
+            ->fromDir('{{ path }}')
+            ->should(
+                static fn (Expr $assert): Expr => $assert
+                    ->toBeClasses()
+                    ->toBeFinal()
+                    ->toHaveSuffix('Policy')
+                    ->toImplementNothing()
+                    ->toExtendsNothing()
+                    ->toUseStrictTypes(),
+            );
+    }
+}
+

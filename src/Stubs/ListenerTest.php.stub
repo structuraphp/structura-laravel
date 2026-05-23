@@ -1,0 +1,30 @@
+<?php
+
+declare(strict_types=1);
+
+namespace {{ namespace }};
+
+use StructuraPhp\Structura\Attributes\TestDox;
+use StructuraPhp\Structura\Expr;
+use StructuraPhp\Structura\Testing\TestBuilder;
+
+final class ListenerTest extends TestBuilder
+{
+    #[TestDox('Listeners should have proper architecture')]
+    public function testListenersShouldHaveProperArchitecture(): void
+    {
+        $this
+            ->allClasses()
+            ->fromDir('{{ path }}')
+            ->should(
+                static fn (Expr $assert): Expr => $assert
+                    ->toUseStrictTypes()
+                    ->toBeClasses()
+                    ->toBeFinal()
+                    ->toHaveSuffix('Listener')
+                    ->toExtendsNothing()
+                    ->toHaveMethod('handle'),
+            );
+    }
+}
+

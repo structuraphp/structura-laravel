@@ -1,0 +1,37 @@
+{
+    "name": "structuraphp/structura-laravel",
+    "description": "Laravel extension for Structura - Architectural testing stubs for Laravel applications",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "StructuraPhp\\StructuraLaravel\\": "src/"
+        }
+    },
+    "require": {
+        "php": "^8.2|^8.3|^8.4|^8.5",
+        "illuminate/config": "^11.0|^12.0|^13.0",
+        "illuminate/console": "^11.0|^12.0|^13.0",
+        "illuminate/support": "^11.0|^12.0|^13.0",
+        "structuraphp/structura": "^0.7",
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^3.94",
+        "phpstan/phpstan": "^2.1",
+        "phpstan/phpstan-phpunit": "^2.0",
+        "phpstan/phpstan-strict-rules": "^2.0",
+        "phpunit/phpunit": "^11.5|^12.5|^13.0",
+        "rector/rector": "^2.3",
+        "shipmonk/composer-dependency-analyser": "^1.8",
+        "orchestra/testbench": "^11.0"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "StructuraPhp\\StructuraLaravel\\StructuraServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}
