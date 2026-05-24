@@ -1,0 +1,39 @@
+<?php
+
+declare(strict_types=1);
+
+namespace {{ namespace }};
+
+use Illuminate\Contracts\Support\Arrayable;
+use JsonSerializable;
+use StructuraPhp\Structura\Attributes\TestDox;
+use StructuraPhp\Structura\Expr;
+use StructuraPhp\Structura\Testing\TestBuilder;
+
+final class DtoTest extends TestBuilder
+{
+    #[TestDox('DTOs should be final readonly classes')]
+    public function testDtosShouldBeFinalReadonlyClasses(): void
+    {
+        $this
+            ->allClasses()
+            ->fromDir('{{ path }}')
+            ->should(
+                static fn (Expr $assert): Expr => $assert
+                    ->toUseStrictTypes()
+                    ->toBeClasses()
+                    ->toBeFinal()
+                    ->toBeReadonly()
+                    ->toHaveSuffix('Dto')
+                    ->toExtendsNothing()
+                    ->toNotUseTrait()
+                    ->dependsOnlyOnImplementation(
+                        names: [
+                            Arrayable::class,
+                            JsonSerializable::class,
+                        ],
+                    ),
+            );
+    }
+}
+
