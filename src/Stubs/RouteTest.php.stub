@@ -1,0 +1,37 @@
+<?php
+
+declare(strict_types=1);
+
+namespace {{ namespace }};
+
+use Illuminate\Support\Facades\Route;
+use StructuraPhp\Structura\Attributes\TestDox;
+use StructuraPhp\Structura\ExprScript;
+use StructuraPhp\Structura\Testing\TestBuilder;
+
+final class RouteTest extends TestBuilder
+{
+    #[TestDox('Route files should use strict types')]
+    public function testRouteFilesShouldUseStrictTypes(): void
+    {
+        $this
+            ->allScripts()
+            ->fromDir('{{ path }}')
+            ->should(
+                static fn (ExprScript $assert): ExprScript => $assert
+                    ->toUseStrictTypes()
+                    ->dependsOnlyOn(
+                        names: [
+                            Route::class,
+                        ],
+                        patterns: [
+                            'App\Http\(Controllers|Middleware)\.*',
+                            'Illuminate\Auth\Middleware\.*',
+                            'Illuminate\Foundation\Http\Middleware\.*',
+                        ]
+                    )
+                    ->toUseInclude(IncludeType::Require),
+            );
+    }
+}
+
