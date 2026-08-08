@@ -6,6 +6,7 @@ namespace StructuraPhp\StructuraLaravel\Enums;
 
 enum StubCategory: string
 {
+    case Command = 'command';
     case Controller = 'controller';
     case Dto = 'dto';
     case Event = 'event';
@@ -26,6 +27,7 @@ enum StubCategory: string
     public function label(): string
     {
         return match ($this) {
+            self::Command => 'Commands',
             self::Controller => 'Controllers',
             self::Dto => 'DTOs (Data Transfer Objects)',
             self::Event => 'Events',
@@ -48,6 +50,7 @@ enum StubCategory: string
     public function stubFilename(): string
     {
         return match ($this) {
+            self::Command => 'TestCommand.php.stub',
             self::Controller => 'TestController.php.stub',
             self::Dto => 'TestDto.php.stub',
             self::Event => 'TestEvent.php.stub',

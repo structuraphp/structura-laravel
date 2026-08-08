@@ -69,6 +69,7 @@ return [
 
     // Source paths per category
     'paths' => [
+        'command' => 'app/Console/Commands',
         'controller' => 'app/Http/Controllers',
         'dto' => 'app/Dto',
         'event' => 'app/Events',

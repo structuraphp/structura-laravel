@@ -1,0 +1,39 @@
+<?php
+
+declare(strict_types=1);
+
+namespace {{ namespace }};
+
+use Illuminate\Console\Command;
+use Illuminate\Contracts\Console\Isolatable;
+use Illuminate\Contracts\Console\PromptsForMissingInput;
+use StructuraPhp\Structura\Attributes\TestDox;
+use StructuraPhp\Structura\Expr;
+use StructuraPhp\Structura\Testing\TestBuilder;
+
+final class TestCommand extends TestBuilder
+{
+    #[TestDox('We want to architect our <info>commands</info>')]
+    public function testCommandsArchitecture(): void
+    {
+        $this
+            ->allClasses()
+            ->fromDir('{{ path }}')
+            ->should(
+                static fn (Expr $assert): Expr => $assert
+                    ->toUseStrictTypes()
+                    ->toBeClasses()
+                    ->toBeFinal()
+                    ->toHaveSuffix('Command')
+                    ->toExtend(Command::class)
+                    ->dependsOnlyOnImplementation(
+                        names: [
+                            Isolatable::class,
+                            PromptsForMissingInput::class,
+                        ],
+                    )
+                    ->toNotUseTrait()
+                    ->toHaveMethod('handle'),
+            );
+    }
+}
