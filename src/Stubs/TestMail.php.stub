@@ -13,8 +13,8 @@ use StructuraPhp\Structura\Testing\TestBuilder;
 
 final class TestMail extends TestBuilder
 {
-    #[TestDox('Mailables should extend Mailable')]
-    public function testMailablesShouldExtendMailable(): void
+    #[TestDox('We want to architect our <info>mails</info>')]
+    public function testMailablesArchitecture(): void
     {
         $this
             ->allClasses()

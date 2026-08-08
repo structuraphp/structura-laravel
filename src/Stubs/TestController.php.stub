@@ -11,8 +11,8 @@ use StructuraPhp\Structura\Testing\TestBuilder;
 
 final class TestController extends TestBuilder
 {
-    #[TestDox('Controllers should have proper architecture')]
-    public function testControllersShouldHaveProperArchitecture(): void
+    #[TestDox('We want to architect our <info>controllers</info>')]
+    public function testControllersArchitecture(): void
     {
         $this
             ->allClasses()

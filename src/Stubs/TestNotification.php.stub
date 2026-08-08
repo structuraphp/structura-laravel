@@ -11,8 +11,8 @@ use StructuraPhp\Structura\Testing\TestBuilder;
 
 final class TestNotification extends TestBuilder
 {
-    #[TestDox('Notifications should extend Notification')]
-    public function testNotificationsShouldExtendNotification(): void
+    #[TestDox('We want to architect our <info>notifications</info>')]
+    public function testNotificationsArchitecture(): void
     {
         $this
             ->allClasses()

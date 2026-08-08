@@ -12,8 +12,8 @@ use StructuraPhp\Structura\Testing\TestBuilder;
 
 final class TestDto extends TestBuilder
 {
-    #[TestDox('DTOs should be final readonly classes')]
-    public function testDtosShouldBeFinalReadonlyClasses(): void
+    #[TestDox('We want to architect our <info>dtos</info>')]
+    public function testDtosArchitecture(): void
     {
         $this
             ->allClasses()

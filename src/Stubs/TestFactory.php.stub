@@ -11,8 +11,8 @@ use StructuraPhp\Structura\Testing\TestBuilder;
 
 final class TestFactory extends TestBuilder
 {
-    #[TestDox('Factories should extend Eloquent Factory')]
-    public function testFactoriesShouldExtendEloquentFactory(): void
+    #[TestDox('We want to architect our <info>factories</info>')]
+    public function testFactoriesArchitecture(): void
     {
         $this
             ->allClasses()

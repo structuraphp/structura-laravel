@@ -13,8 +13,8 @@ use StructuraPhp\Structura\Testing\TestBuilder;
 
 final class TestJob extends TestBuilder
 {
-    #[TestDox('Jobs should have proper architecture')]
-    public function testJobsShouldHaveProperArchitecture(): void
+    #[TestDox('We want to architect our <info>jobs</info>')]
+    public function testJobsArchitecture(): void
     {
         $this
             ->allClasses()

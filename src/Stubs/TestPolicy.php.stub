@@ -10,8 +10,8 @@ use StructuraPhp\Structura\Testing\TestBuilder;
 
 final class TestPolicy extends TestBuilder
 {
-    #[TestDox('Policies should have proper architecture')]
-    public function testPoliciesShouldHaveProperArchitecture(): void
+    #[TestDox('We want to architect our <info>policies</info>')]
+    public function testPoliciesArchitecture(): void
     {
         $this
             ->allClasses()

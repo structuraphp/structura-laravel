@@ -12,8 +12,8 @@ use StructuraPhp\Structura\Testing\TestBuilder;
 
 final class TestRoute extends TestBuilder
 {
-    #[TestDox('Route files should use strict types')]
-    public function testRouteFilesShouldUseStrictTypes(): void
+    #[TestDox('We want to architect our <info>routes</info>')]
+    public function testRouteArchitecture(): void
     {
         $this
             ->allScripts()

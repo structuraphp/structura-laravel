@@ -10,8 +10,8 @@ use StructuraPhp\Structura\Testing\TestBuilder;
 
 final class TestEvent extends TestBuilder
 {
-    #[TestDox('Events should have proper architecture')]
-    public function testEventsShouldHaveProperArchitecture(): void
+    #[TestDox('We want to architect our <info>events</info>')]
+    public function testEventsArchitecture(): void
     {
         $this
             ->allClasses()

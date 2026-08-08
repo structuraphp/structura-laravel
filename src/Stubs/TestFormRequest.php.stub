@@ -11,8 +11,8 @@ use StructuraPhp\Structura\Testing\TestBuilder;
 
 final class TestFormRequest extends TestBuilder
 {
-    #[TestDox('Form Requests should extend FormRequest and have rules')]
-    public function testFormRequestsShouldExtendFormRequestAndHaveRules(): void
+    #[TestDox('We want to architect our <info>requests</info>')]
+    public function testFormRequestsArchitecture(): void
     {
         $this
             ->allClasses()

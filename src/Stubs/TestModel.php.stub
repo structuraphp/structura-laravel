@@ -14,8 +14,8 @@ use StructuraPhp\Structura\ValueObjects\ClassDescription;
 
 final class TestModel extends TestBuilder
 {
-    #[TestDox('Models should extend Eloquent Model')]
-    public function testModelsShouldExtendEloquentModel(): void
+    #[TestDox('We want to architect our <info>models</info>')]
+    public function testModelsArchitecture(): void
     {
         $this
             ->allClasses()

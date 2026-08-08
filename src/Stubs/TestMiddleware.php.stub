@@ -10,8 +10,8 @@ use StructuraPhp\Structura\Testing\TestBuilder;
 
 final class TestMiddleware extends TestBuilder
 {
-    #[TestDox('Middlewares should have proper architecture')]
-    public function testMiddlewaresShouldHaveProperArchitecture(): void
+    #[TestDox('We want to architect our <info>middleware</info>')]
+    public function testMiddlewaresArchitecture(): void
     {
         $this
             ->allClasses()

@@ -10,8 +10,8 @@ use StructuraPhp\Structura\Testing\TestBuilder;
 
 final class TestListener extends TestBuilder
 {
-    #[TestDox('Listeners should have proper architecture')]
-    public function testListenersShouldHaveProperArchitecture(): void
+    #[TestDox('We want to architect our <info>listners</info>')]
+    public function testListenersArchitecture(): void
     {
         $this
             ->allClasses()

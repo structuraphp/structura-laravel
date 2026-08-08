@@ -10,8 +10,8 @@ use StructuraPhp\Structura\Testing\TestBuilder;
 
 final class TestService extends TestBuilder
 {
-    #[TestDox('Services should have proper architecture')]
-    public function testServicesShouldHaveProperArchitecture(): void
+    #[TestDox('We want to architect our <info>services</info>')]
+    public function testServicesArchitecture(): void
     {
         $this
             ->allClasses()
