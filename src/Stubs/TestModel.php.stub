@@ -24,6 +24,7 @@ final class TestModel extends TestBuilder
                 static fn (Expr $assert): Expr => $assert
                     ->toUseStrictTypes()
                     ->toBeClasses()
+                    ->toBeFinal()
                     ->or(
                         static fn (Expr $expr): Expr => $expr
                             ->toExtend(Model::class)
