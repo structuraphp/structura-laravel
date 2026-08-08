@@ -19,6 +19,7 @@ enum StubCategory: string
     case Notification = 'notification';
     case Policy = 'policy';
     case Route = 'route';
+    case Rule = 'rule';
     case Service = 'service';
 
     public function label(): string
@@ -37,6 +38,7 @@ enum StubCategory: string
             self::Notification => 'Notifications',
             self::Policy => 'Policies',
             self::Route => 'Routes',
+            self::Rule => 'Rule',
             self::Service => 'Services',
         };
     }
@@ -57,6 +59,7 @@ enum StubCategory: string
             self::Notification => 'TestNotification.php.stub',
             self::Policy => 'TestPolicy.php.stub',
             self::Route => 'TestRoute.php.stub',
+            self::Rule => 'TestRule.php.stub',
             self::Service => 'TestService.php.stub',
         };
     }

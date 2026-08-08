@@ -45,6 +45,7 @@ return [
         'notification' => 'app/Notifications',
         'policy' => 'app/Policies',
         'route' => 'routes',
+        'rule' => 'app/Rules',
         'service' => 'app/Services',
     ],
 ];

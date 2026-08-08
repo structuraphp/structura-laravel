@@ -69,20 +69,21 @@ return [
 
     // Source paths per category
     'paths' => [
-        'controller'   => 'app/Http/Controllers',
-        'dto'          => 'app/DataTransferObjects',
-        'event'        => 'app/Events',
-        'factory'      => 'database/factories',
+        'controller' => 'app/Http/Controllers',
+        'dto' => 'app/Dto',
+        'event' => 'app/Events',
+        'factory' => 'database/factories',
         'form_request' => 'app/Http/Requests',
-        'job'          => 'app/Jobs',
-        'listener'     => 'app/Listeners',
-        'mail'         => 'app/Mail',
-        'middleware'    => 'app/Http/Middleware',
-        'model'        => 'app/Models',
+        'job' => 'app/Jobs',
+        'listener' => 'app/Listeners',
+        'mail' => 'app/Mail',
+        'middleware' => 'app/Http/Middleware',
+        'model' => 'app/Models',
         'notification' => 'app/Notifications',
-        'policy'       => 'app/Policies',
-        'route'        => 'routes',
-        'service'      => 'app/Services',
+        'policy' => 'app/Policies',
+        'route' => 'routes',
+        'rule' => 'app/Rules',
+        'service' => 'app/Services',
     ],
 ];
 ```
