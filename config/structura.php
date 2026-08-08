@@ -33,7 +33,7 @@ return [
     */
     'paths' => [
         'controller' => 'app/Http/Controllers',
-        'dto' => 'app/DataTransferObjects',
+        'dto' => 'app/Dto',
         'form_request' => 'app/Http/Requests',
         'model' => 'app/Models',
         'policy' => 'app/Policies',

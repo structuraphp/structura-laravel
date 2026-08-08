@@ -4,15 +4,15 @@ declare(strict_types=1);
 
 namespace {{ namespace }};
 
-use Illuminate\Database\Eloquent\Factories\Factory
+use Illuminate\Database\Eloquent\Model;
 use StructuraPhp\Structura\Attributes\TestDox;
 use StructuraPhp\Structura\Expr;
 use StructuraPhp\Structura\Testing\TestBuilder;
 
-final class FactoryTest extends TestBuilder
+final class TestModel extends TestBuilder
 {
-    #[TestDox('Factories should extend Eloquent Factory')]
-    public function testFactoriesShouldExtendEloquentFactory(): void
+    #[TestDox('Models should extend Eloquent Model')]
+    public function testModelsShouldExtendEloquentModel(): void
     {
         $this
             ->allClasses()
@@ -21,11 +21,7 @@ final class FactoryTest extends TestBuilder
                 static fn (Expr $assert): Expr => $assert
                     ->toUseStrictTypes()
                     ->toBeClasses()
-                    ->toBeFinal()
-                    ->toHaveSuffix('Factory')
-                    ->toExtend(Factory::class)
-                    ->toImplementNothing()
-                    ->toHaveMethod('definition'),
+                    ->toExtend(Model::class),
             );
     }
 }

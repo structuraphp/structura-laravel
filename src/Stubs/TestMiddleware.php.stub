@@ -4,15 +4,14 @@ declare(strict_types=1);
 
 namespace {{ namespace }};
 
-use App\Http\Controllers\Controller;
 use StructuraPhp\Structura\Attributes\TestDox;
 use StructuraPhp\Structura\Expr;
 use StructuraPhp\Structura\Testing\TestBuilder;
 
-final class ControllerTest extends TestBuilder
+final class TestMiddleware extends TestBuilder
 {
-    #[TestDox('Controllers should have proper architecture')]
-    public function testControllersShouldHaveProperArchitecture(): void
+    #[TestDox('Middlewares should have proper architecture')]
+    public function testMiddlewaresShouldHaveProperArchitecture(): void
     {
         $this
             ->allClasses()
@@ -22,10 +21,8 @@ final class ControllerTest extends TestBuilder
                     ->toUseStrictTypes()
                     ->toBeClasses()
                     ->toBeFinal()
-                    ->toHaveSuffix('Controller')
-                    ->toExtend(Controller::class)
-                    ->toImplementNothing()
-                    ->toNotUseTrait(),
+                    ->toHaveSuffix('Middleware')
+                    ->toHaveMethod('handle'),
             );
     }
 }

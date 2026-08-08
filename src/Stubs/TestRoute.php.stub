@@ -6,10 +6,11 @@ namespace {{ namespace }};
 
 use Illuminate\Support\Facades\Route;
 use StructuraPhp\Structura\Attributes\TestDox;
+use StructuraPhp\Structura\Enums\IncludeType;
 use StructuraPhp\Structura\ExprScript;
 use StructuraPhp\Structura\Testing\TestBuilder;
 
-final class RouteTest extends TestBuilder
+final class TestRoute extends TestBuilder
 {
     #[TestDox('Route files should use strict types')]
     public function testRouteFilesShouldUseStrictTypes(): void

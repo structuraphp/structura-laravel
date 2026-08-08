@@ -8,20 +8,22 @@ use StructuraPhp\Structura\Attributes\TestDox;
 use StructuraPhp\Structura\Expr;
 use StructuraPhp\Structura\Testing\TestBuilder;
 
-final class NotificationTest extends TestBuilder
+final class TestListener extends TestBuilder
 {
-    #[TestDox('Notifications should extend Notification')]
-    public function testNotificationsShouldExtendNotification(): void
+    #[TestDox('Listeners should have proper architecture')]
+    public function testListenersShouldHaveProperArchitecture(): void
     {
         $this
             ->allClasses()
             ->fromDir('{{ path }}')
             ->should(
                 static fn (Expr $assert): Expr => $assert
+                    ->toUseStrictTypes()
                     ->toBeClasses()
                     ->toBeFinal()
-                    ->toExtend('Illuminate\Notifications\Notification')
-                    ->toUseStrictTypes(),
+                    ->toHaveSuffix('Listener')
+                    ->toExtendsNothing()
+                    ->toHaveMethod('handle'),
             );
     }
 }

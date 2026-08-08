@@ -4,25 +4,24 @@ declare(strict_types=1);
 
 namespace {{ namespace }};
 
-use Illuminate\Mail\Mailable;
 use StructuraPhp\Structura\Attributes\TestDox;
 use StructuraPhp\Structura\Expr;
 use StructuraPhp\Structura\Testing\TestBuilder;
 
-final class MailTest extends TestBuilder
+final class TestService extends TestBuilder
 {
-    #[TestDox('Mailables should extend Mailable')]
-    public function testMailablesShouldExtendMailable(): void
+    #[TestDox('Services should have proper architecture')]
+    public function testServicesShouldHaveProperArchitecture(): void
     {
         $this
             ->allClasses()
             ->fromDir('{{ path }}')
             ->should(
                 static fn (Expr $assert): Expr => $assert
+                    ->toUseStrictTypes()
                     ->toBeClasses()
-                    ->toBeFinal()
-                    ->toExtend(Mailable::class)
-                    ->toUseStrictTypes(),
+                    ->toBeReadonly()
+                    ->toHaveSuffix('Service'),
             );
     }
 }

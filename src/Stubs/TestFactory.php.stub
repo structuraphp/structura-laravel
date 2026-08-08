@@ -4,26 +4,28 @@ declare(strict_types=1);
 
 namespace {{ namespace }};
 
+use Illuminate\Database\Eloquent\Factories\Factory;
 use StructuraPhp\Structura\Attributes\TestDox;
 use StructuraPhp\Structura\Expr;
 use StructuraPhp\Structura\Testing\TestBuilder;
 
-final class PolicyTest extends TestBuilder
+final class TestFactory extends TestBuilder
 {
-    #[TestDox('Policies should have proper architecture')]
-    public function testPoliciesShouldHaveProperArchitecture(): void
+    #[TestDox('Factories should extend Eloquent Factory')]
+    public function testFactoriesShouldExtendEloquentFactory(): void
     {
         $this
             ->allClasses()
             ->fromDir('{{ path }}')
             ->should(
                 static fn (Expr $assert): Expr => $assert
+                    ->toUseStrictTypes()
                     ->toBeClasses()
                     ->toBeFinal()
-                    ->toHaveSuffix('Policy')
+                    ->toHaveSuffix('Factory')
+                    ->toExtend(Factory::class)
                     ->toImplementNothing()
-                    ->toExtendsNothing()
-                    ->toUseStrictTypes(),
+                    ->toHaveMethod('definition'),
             );
     }
 }

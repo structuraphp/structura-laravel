@@ -8,10 +8,10 @@ use StructuraPhp\Structura\Attributes\TestDox;
 use StructuraPhp\Structura\Expr;
 use StructuraPhp\Structura\Testing\TestBuilder;
 
-final class ListenerTest extends TestBuilder
+final class TestJob extends TestBuilder
 {
-    #[TestDox('Listeners should have proper architecture')]
-    public function testListenersShouldHaveProperArchitecture(): void
+    #[TestDox('Jobs should have proper architecture')]
+    public function testJobsShouldHaveProperArchitecture(): void
     {
         $this
             ->allClasses()
@@ -21,8 +21,9 @@ final class ListenerTest extends TestBuilder
                     ->toUseStrictTypes()
                     ->toBeClasses()
                     ->toBeFinal()
-                    ->toHaveSuffix('Listener')
+                    ->toHaveSuffix('Job')
                     ->toExtendsNothing()
+                    ->toImplement(ShouldQueue::class)
                     ->toHaveMethod('handle'),
             );
     }
