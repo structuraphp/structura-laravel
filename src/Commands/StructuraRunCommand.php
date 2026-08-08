@@ -35,7 +35,9 @@ final class StructuraRunCommand extends Command
             timeout: null,
         );
 
-        if ($this->output->isDecorated() && Process::isPtySupported()) {
+        if ($this->input->isInteractive() && Process::isTtySupported()) {
+            $process->setTty(true);
+        } elseif ($this->output->isDecorated() && Process::isPtySupported()) {
             $process->setPty(true);
         }
 
