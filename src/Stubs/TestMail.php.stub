@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace {{ namespace }};
 
+use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
+use Illuminate\Queue\SerializesModels;
 use StructuraPhp\Structura\Attributes\TestDox;
 use StructuraPhp\Structura\Expr;
 use StructuraPhp\Structura\Testing\TestBuilder;
@@ -19,10 +21,16 @@ final class TestMail extends TestBuilder
             ->fromDir('{{ path }}')
             ->should(
                 static fn (Expr $assert): Expr => $assert
+                    ->toUseStrictTypes()
                     ->toBeClasses()
                     ->toBeFinal()
                     ->toExtend(Mailable::class)
-                    ->toUseStrictTypes(),
+                    ->toUseTrait(
+                        names: [
+                            Queueable::class,
+                            SerializesModels::class,
+                        ],
+                    ),
             );
     }
 }

@@ -5,9 +5,12 @@ declare(strict_types=1);
 namespace {{ namespace }};
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\Pivot;
+use Illuminate\Foundation\Auth\User;
 use StructuraPhp\Structura\Attributes\TestDox;
 use StructuraPhp\Structura\Expr;
 use StructuraPhp\Structura\Testing\TestBuilder;
+use StructuraPhp\Structura\ValueObjects\ClassDescription;
 
 final class TestModel extends TestBuilder
 {
@@ -21,7 +24,26 @@ final class TestModel extends TestBuilder
                 static fn (Expr $assert): Expr => $assert
                     ->toUseStrictTypes()
                     ->toBeClasses()
-                    ->toExtend(Model::class),
+                    ->or(
+                        static fn (Expr $expr): Expr => $expr
+                            ->toExtend(Model::class)
+                            ->toExtend(Pivot::class)
+                            ->toExtend(User::class)
+                    )
+                    ->toHaveCorrespondingClass(
+                        static fn (ClassDescription $classDescription): string => preg_replace(
+                            '/^App\\\Models\\\(.+?)$/',
+                            'Database\\\Factories\\\$1Factory',
+                            $classDescription->namespace,
+                        )
+                    )
+                    ->toHaveCorrespondingClass(
+                        static fn (ClassDescription $classDescription): string => preg_replace(
+                            '/^App\\\Models\\\(.+?)$/',
+                            'App\\\Policies\\\$1Policy',
+                            $classDescription->namespace,
+                        )
+                    )
             );
     }
 }

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace {{ namespace }};
 
+use Illuminate\Notifications\Notification;
 use StructuraPhp\Structura\Attributes\TestDox;
 use StructuraPhp\Structura\Expr;
 use StructuraPhp\Structura\Testing\TestBuilder;
@@ -18,10 +19,10 @@ final class TestNotification extends TestBuilder
             ->fromDir('{{ path }}')
             ->should(
                 static fn (Expr $assert): Expr => $assert
+                    ->toUseStrictTypes()
                     ->toBeClasses()
                     ->toBeFinal()
-                    ->toExtend('Illuminate\Notifications\Notification')
-                    ->toUseStrictTypes(),
+                    ->toExtend(Notification::class),
             );
     }
 }

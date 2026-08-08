@@ -18,12 +18,12 @@ final class TestPolicy extends TestBuilder
             ->fromDir('{{ path }}')
             ->should(
                 static fn (Expr $assert): Expr => $assert
+                    ->toUseStrictTypes()
                     ->toBeClasses()
                     ->toBeFinal()
                     ->toHaveSuffix('Policy')
                     ->toImplementNothing()
-                    ->toExtendsNothing()
-                    ->toUseStrictTypes(),
+                    ->toExtendsNothing(),
             );
     }
 }

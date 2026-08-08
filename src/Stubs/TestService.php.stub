@@ -20,6 +20,7 @@ final class TestService extends TestBuilder
                 static fn (Expr $assert): Expr => $assert
                     ->toUseStrictTypes()
                     ->toBeClasses()
+                    ->toBeFinal()
                     ->toBeReadonly()
                     ->toHaveSuffix('Service'),
             );

@@ -17,6 +17,11 @@ final class TestController extends TestBuilder
         $this
             ->allClasses()
             ->fromDir('{{ path }}')
+            ->that(
+                static fn (Expr $expr): Expr => $expr
+                    // To ignore the abstract class at the root of Laravel projects
+                    ->notToBeInOneOfTheNamespaces(Controller::class)
+            )
             ->should(
                 static fn (Expr $assert): Expr => $assert
                     ->toUseStrictTypes()

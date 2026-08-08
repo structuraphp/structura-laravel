@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace {{ namespace }};
 
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Foundation\Queue\Queueable;
+use Illuminate\Queue\SerializesModels;
 use StructuraPhp\Structura\Attributes\TestDox;
 use StructuraPhp\Structura\Expr;
 use StructuraPhp\Structura\Testing\TestBuilder;
@@ -24,6 +27,12 @@ final class TestJob extends TestBuilder
                     ->toHaveSuffix('Job')
                     ->toExtendsNothing()
                     ->toImplement(ShouldQueue::class)
+                    ->toUseTrait(
+                        names: [
+                            Queueable::class,
+                            SerializesModels::class,
+                        ],
+                    )
                     ->toHaveMethod('handle'),
             );
     }
