@@ -37,6 +37,10 @@ final class StructuraRunCommand extends Command
             timeout: null,
         );
 
+        if ($this->output->isDecorated() && Process::isPtySupported()) {
+            $process->setPty(true);
+        }
+
         $process->run(function (string $type, string $buffer): void {
             $this->output->write($buffer);
         });
