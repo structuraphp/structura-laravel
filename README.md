@@ -42,7 +42,7 @@ php artisan structura
 php artisan structura analyze
 
 # With options
-php artisan structura analyze --test-suite=laravel --stop-on-failure
+php artisan structura analyze -- --test-suite=laravel --stop-on-failure
 
 # Other commands
 php artisan structura init

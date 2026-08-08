@@ -12,9 +12,7 @@ final class StructuraRunCommand extends Command
     /** @var string */
     protected $signature = 'structura
         {cmd=analyze : The structura command to run (analyze, init, make:test)}
-        {--config= : Path to the structura config file}
-        {--test-suite= : Test suite to run}
-        {--stop-on-failure : Stop on first failure}';
+        {args?* : Extra arguments/options forwarded as-is to structura (put them after --)}';
 
     /** @var string */
     protected $description = 'Run a Structura command (proxy to vendor/bin/structura)';
@@ -59,23 +57,9 @@ final class StructuraRunCommand extends Command
         $cmd = $this->argument('cmd');
         $arguments[] = $cmd;
 
-        /** @var null|string $config */
-        $config = $this->option('config');
-
-        if ($config !== null) {
-            $arguments[] = '--config=' . $config;
-        }
-
-        /** @var null|string $testSuite */
-        $testSuite = $this->option('test-suite');
-
-        if ($testSuite !== null) {
-            $arguments[] = '--test-suite=' . $testSuite;
-        }
-
-        if ($this->option('stop-on-failure')) {
-            $arguments[] = '--stop-on-failure';
-        }
+        /** @var list<string> $extra */
+        $extra = $this->argument('args');
+        array_push($arguments, ...$extra);
 
         return $arguments;
     }
