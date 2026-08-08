@@ -85,6 +85,7 @@ return [
         'policy' => 'app/Policies',
         'route' => 'routes',
         'rule' => 'app/Rules',
+        'seeder' => 'database/seeders',
         'service' => 'app/Services',
     ],
 ];

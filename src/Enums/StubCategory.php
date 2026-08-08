@@ -22,6 +22,7 @@ enum StubCategory: string
     case Policy = 'policy';
     case Route = 'route';
     case Rule = 'rule';
+    case Seeder = 'seeder';
     case Service = 'service';
 
     public function label(): string
@@ -43,6 +44,7 @@ enum StubCategory: string
             self::Policy => 'Policies',
             self::Route => 'Routes',
             self::Rule => 'Rule',
+            self::Seeder => 'Seeders',
             self::Service => 'Services',
         };
     }
@@ -66,6 +68,7 @@ enum StubCategory: string
             self::Policy => 'TestPolicy.php.stub',
             self::Route => 'TestRoute.php.stub',
             self::Rule => 'TestRule.php.stub',
+            self::Seeder => 'TestSeeder.php.stub',
             self::Service => 'TestService.php.stub',
         };
     }
