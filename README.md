@@ -70,6 +70,7 @@ return [
     // Source paths per category
     'paths' => [
         'command' => 'app/Console/Commands',
+        'component' => 'app/View/Components',
         'controller' => 'app/Http/Controllers',
         'dto' => 'app/Dto',
         'event' => 'app/Events',
