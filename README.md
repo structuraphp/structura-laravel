@@ -78,6 +78,7 @@ return [
         'listener' => 'app/Listeners',
         'mail' => 'app/Mail',
         'middleware' => 'app/Http/Middleware',
+        'migration' => 'database/migrations',
         'model' => 'app/Models',
         'notification' => 'app/Notifications',
         'policy' => 'app/Policies',

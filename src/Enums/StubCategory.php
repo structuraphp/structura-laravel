@@ -15,6 +15,7 @@ enum StubCategory: string
     case Listener = 'listener';
     case Mail = 'mail';
     case Middleware = 'middleware';
+    case Migration = 'migration';
     case Model = 'model';
     case Notification = 'notification';
     case Policy = 'policy';
@@ -34,6 +35,7 @@ enum StubCategory: string
             self::Listener => 'Listeners',
             self::Mail => 'Mailables',
             self::Middleware => 'Middlewares',
+            self::Migration => 'Migrations',
             self::Model => 'Models',
             self::Notification => 'Notifications',
             self::Policy => 'Policies',
@@ -55,6 +57,7 @@ enum StubCategory: string
             self::Listener => 'TestListener.php.stub',
             self::Mail => 'TestMail.php.stub',
             self::Middleware => 'TestMiddleware.php.stub',
+            self::Migration => 'TestMigration.php.stub',
             self::Model => 'TestModel.php.stub',
             self::Notification => 'TestNotification.php.stub',
             self::Policy => 'TestPolicy.php.stub',

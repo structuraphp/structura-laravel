@@ -1,0 +1,33 @@
+<?php
+
+declare(strict_types=1);
+
+namespace {{ namespace }};
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+use StructuraPhp\Structura\Attributes\TestDox;
+use StructuraPhp\Structura\Expr;
+use StructuraPhp\Structura\Testing\TestBuilder;
+
+final class TestMigration extends TestBuilder
+{
+    #[TestDox('We want to architect our <info>migrations</info>')]
+    public function testMigrationsArchitecture(): void
+    {
+        $this
+            ->allClasses()
+            ->fromDir('{{ path }}')
+            ->should(
+                static fn (Expr $assert): Expr => $assert
+                    ->toUseStrictTypes()
+                    ->toBeAnonymousClasses()
+                    ->toExtend(Migration::class)
+                    ->toImplementNothing()
+                    ->toNotUseTrait()
+                    ->toHaveMethod('up')
+                    ->toHaveMethod('down'),
+            );
+    }
+}
