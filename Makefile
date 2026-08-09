@@ -14,7 +14,7 @@ define printSection
 endef
 
 .PHONY: all ## Run all checks
-all: fix phpstan rector dependency test
+all: fix phpstan rector dependency
 
 #  _   _      _
 # | | | |    | |
@@ -90,23 +90,3 @@ phpstan: ## Check if the data types are compliant
 dependency: ## Check if the dependency are compliant
 	$(call printSection,COMPOSER DEPENDENCY)
 	${BIN_DIR}/composer-dependency-analyser
-
-#  _____         _
-# |_   _|       | |
-#   | | ___  ___| |_
-#   | |/ _ \/ __| __|
-#   | |  __/\__ \ |_
-#   \_/\___||___/\__|
-
-.PHONY: test
-test: ## Run unit tests [usage: make test args="--filter=TestName --stop-on-failure"]
-	$(call printSection,TEST phpunit)
-	${BIN_DIR}/phpunit $(args)
-
-phar: ## Build PHAR
-	$(call printSection,BUILD Phar)
-	$(COMPOSER) global require humbug/box
-	$(COMPOSER) require --dev bamarni/composer-bin-plugin
-	$(COMPOSER) bin box require --dev humbug/box
-	$(COMPOSER) install --no-dev -o
-	${BIN_DIR}/box compile

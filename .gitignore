@@ -1,6 +1,6 @@
 # directories
 .idea
-/storage/
+/build/
 /vendor/
 
 # files
