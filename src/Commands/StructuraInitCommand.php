@@ -30,6 +30,7 @@ final class StructuraInitCommand extends Command
         $categories = multiselect(
             label: 'Which architecture tests do you want to install?',
             options: $this->getStubCategory(),
+            default: $this->getDefaultCategories(),
             required: true,
         );
 
@@ -92,6 +93,24 @@ final class StructuraInitCommand extends Command
         }
 
         return $options;
+    }
+
+    /**
+     * @return list<string>
+     */
+    private function getDefaultCategories(): array
+    {
+        $defaults = [];
+
+        foreach (StubCategory::cases() as $category) {
+            $path = Config::string('structura.paths.' . $category->value, 'app');
+
+            if (File::isDirectory(base_path($path))) {
+                $defaults[] = $category->value;
+            }
+        }
+
+        return $defaults;
     }
 
     private function getStubPath(StubCategory $category): string
