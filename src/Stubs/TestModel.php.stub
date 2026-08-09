@@ -29,7 +29,7 @@ final class TestModel extends TestBuilder
                         static fn (Expr $expr): Expr => $expr
                             ->toExtend(Model::class)
                             ->toExtend(Pivot::class)
-                            ->toExtend(User::class)
+                            ->toExtend(User::class),
                     )
                     ->toHaveCorrespondingClass(
                         static fn (ClassDescription $classDescription): string => preg_replace(

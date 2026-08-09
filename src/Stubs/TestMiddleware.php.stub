@@ -21,7 +21,22 @@ final class TestMiddleware extends TestBuilder
                     ->toUseStrictTypes()
                     ->toBeClasses()
                     ->toBeFinal()
-                    ->toHaveSuffix('Middleware')
+                    ->or(
+                        static fn (Expr $expr): Expr => $expr
+                            ->and(
+                                static fn (Expr $expr): Expr => $expr
+                                    ->toExtendsNothing()
+                                    ->toBeReadonly()
+                                    ->toHaveMethod('handle'),
+                            )
+                            ->dependsOnlyOnInheritance(
+                                patterns: [
+                                    'Illuminate\.*\Middleware\.*',
+                                ],
+                            )
+                    )
+                    ->toImplementNothing()
+                    ->toNotUseTrait()
                     ->toHaveMethod('handle'),
             );
     }

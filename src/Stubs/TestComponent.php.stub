@@ -22,7 +22,6 @@ final class TestComponent extends TestBuilder
                     ->toUseStrictTypes()
                     ->toBeClasses()
                     ->toBeFinal()
-                    ->toHaveSuffix('Component')
                     ->toExtend(Component::class)
                     ->toImplementNothing()
                     ->toNotUseTrait(),

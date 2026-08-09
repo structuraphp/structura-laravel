@@ -25,6 +25,7 @@ final class TestFactory extends TestBuilder
                     ->toHaveSuffix('Factory')
                     ->toExtend(Factory::class)
                     ->toImplementNothing()
+                    ->toNotUseTrait()
                     ->toHaveMethod('definition'),
             );
     }

@@ -26,12 +26,17 @@ final class TestJob extends TestBuilder
                     ->toBeFinal()
                     ->toHaveSuffix('Job')
                     ->toExtendsNothing()
-                    ->toImplement(ShouldQueue::class)
-                    ->toUseTrait(
+                    ->or(
+                        static fn (Expr $expr): Expr => $expr
+                            ->toImplement(ShouldQueue::class)
+                            ->toImplement(ShouldQueueAfterCommit::class),
+                    )
+                    ->dependsOnlyOnUseTrait(
                         names: [
                             Queueable::class,
                             SerializesModels::class,
                         ],
+                        message: 'We recommend using the dispatcher, rather than the Dispatchable trait',
                     )
                     ->toHaveMethod('handle'),
             );

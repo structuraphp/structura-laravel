@@ -20,7 +20,18 @@ final class TestEvent extends TestBuilder
                 static fn (Expr $assert): Expr => $assert
                     ->toUseStrictTypes()
                     ->toBeClasses()
-                    ->toBeFinal(),
+                    ->toBeFinal()
+                    ->toBeReadonly()
+                    ->toHaveSuffix('Event')
+                    ->toExtendsNothing()
+                    ->toImplementNothing()
+                    ->dependsOnlyOnUseTrait(
+                        names: [
+                            SerializesModels::class,
+                        ],
+                        message: 'We recommend using the event() method or the dispatcher, rather than the Dispatchable trait',
+                    )
+                    ->toHaveConstructor(),
             );
     }
 }
