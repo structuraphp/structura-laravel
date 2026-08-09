@@ -1,0 +1,31 @@
+<?php
+
+declare(strict_types=1);
+
+namespace {{ namespace }};
+
+use Illuminate\Http\Resources\Json\JsonResource;
+use StructuraPhp\Structura\Attributes\TestDox;
+use StructuraPhp\Structura\Expr;
+use StructuraPhp\Structura\Testing\TestBuilder;
+
+final class TestResource extends TestBuilder
+{
+    #[TestDox('We want to architect our <info>resources</info>')]
+    public function testResourcesArchitecture(): void
+    {
+        $this
+            ->allClasses()
+            ->fromDir('{{ path }}')
+            ->should(
+                static fn (Expr $assert): Expr => $assert
+                    ->toUseStrictTypes()
+                    ->toBeClasses()
+                    ->toBeFinal()
+                    ->toHaveSuffix('Resource')
+                    ->toExtend(JsonResource::class)
+                    ->toImplementNothing()
+                    ->toHaveMethod('toArray'),
+            );
+    }
+}

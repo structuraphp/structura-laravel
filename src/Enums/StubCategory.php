@@ -21,6 +21,7 @@ enum StubCategory: string
     case Model = 'model';
     case Notification = 'notification';
     case Policy = 'policy';
+    case Resource = 'resource';
     case Route = 'route';
     case Rule = 'rule';
     case Seeder = 'seeder';
@@ -44,6 +45,7 @@ enum StubCategory: string
             self::Model => 'Models',
             self::Notification => 'Notifications',
             self::Policy => 'Policies',
+            self::Resource => 'Resources',
             self::Route => 'Routes',
             self::Rule => 'Rule',
             self::Seeder => 'Seeders',
@@ -69,6 +71,7 @@ enum StubCategory: string
             self::Model => 'TestModel.php.stub',
             self::Notification => 'TestNotification.php.stub',
             self::Policy => 'TestPolicy.php.stub',
+            self::Resource => 'TestResource.php.stub',
             self::Route => 'TestRoute.php.stub',
             self::Rule => 'TestRule.php.stub',
             self::Seeder => 'TestSeeder.php.stub',

@@ -47,6 +47,7 @@ return [
         'model' => 'app/Models',
         'notification' => 'app/Notifications',
         'policy' => 'app/Policies',
+        'resource' => 'app/Http/Resources',
         'route' => 'routes',
         'rule' => 'app/Rules',
         'seeder' => 'database/seeders',
