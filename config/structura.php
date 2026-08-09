@@ -46,6 +46,7 @@ return [
         'migration' => 'database/migrations',
         'model' => 'app/Models',
         'notification' => 'app/Notifications',
+        'observer' => 'app/Observers',
         'policy' => 'app/Policies',
         'resource' => 'app/Http/Resources',
         'route' => 'routes',

@@ -1,0 +1,29 @@
+<?php
+
+declare(strict_types=1);
+
+namespace {{ namespace }};
+
+use StructuraPhp\Structura\Attributes\TestDox;
+use StructuraPhp\Structura\Expr;
+use StructuraPhp\Structura\Testing\TestBuilder;
+
+final class TestObserver extends TestBuilder
+{
+    #[TestDox('We want to architect our <info>observers</info>')]
+    public function testObserversArchitecture(): void
+    {
+        $this
+            ->allClasses()
+            ->fromDir('{{ path }}')
+            ->should(
+                static fn (Expr $assert): Expr => $assert
+                    ->toUseStrictTypes()
+                    ->toBeClasses()
+                    ->toBeFinal()
+                    ->toHaveSuffix('Observer')
+                    ->toExtendsNothing()
+                    ->toImplementNothing(),
+            );
+    }
+}

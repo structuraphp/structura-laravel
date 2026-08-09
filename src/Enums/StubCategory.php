@@ -20,6 +20,7 @@ enum StubCategory: string
     case Migration = 'migration';
     case Model = 'model';
     case Notification = 'notification';
+    case Observer = 'observer';
     case Policy = 'policy';
     case Resource = 'resource';
     case Route = 'route';
@@ -44,6 +45,7 @@ enum StubCategory: string
             self::Migration => 'Migrations',
             self::Model => 'Models',
             self::Notification => 'Notifications',
+            self::Observer => 'Observers',
             self::Policy => 'Policies',
             self::Resource => 'Resources',
             self::Route => 'Routes',
@@ -70,6 +72,7 @@ enum StubCategory: string
             self::Migration => 'TestMigration.php.stub',
             self::Model => 'TestModel.php.stub',
             self::Notification => 'TestNotification.php.stub',
+            self::Observer => 'TestObserver.php.stub',
             self::Policy => 'TestPolicy.php.stub',
             self::Resource => 'TestResource.php.stub',
             self::Route => 'TestRoute.php.stub',
